@@ -20,8 +20,18 @@ func HandleShutdownReq(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	// Sleep for 180 seconds, and then send OK
 	w.WriteHeader(http.StatusOK)
+	start := "Received shutdown request at" + time.Now().String()
+	fmt.Println(start)
+	w.Write([]byte(start))
+	// Sleep for 120 seconds, and then send OK
+	time.Sleep(120 * time.Second)
+
+	end := "Sent ok response at" + time.Now().String()
+	fmt.Println(end)
+	w.Write([]byte("\n"))
+	w.Write([]byte(end))
+
 	return
 }
 
@@ -49,6 +59,7 @@ func handlePrintReq(w http.ResponseWriter, req *http.Request) {
 	if err != nil {
 		writeError(http.StatusBadRequest, err, w)
 	}
+	fmt.Println(string(data))
 }
 
 //StartServer starts HTTP server with given port
