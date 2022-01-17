@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/rkbk2000/httplistener/rest"
+	"httplistener/rest"
 )
 
 const serverPort string = "40010"

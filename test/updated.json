@@ -1,0 +1,69 @@
+{
+    "CollectorPayload": {
+        "domain": "www.microfocus.com",
+        "filterConfig": {
+            "resourceList": [
+                "arn:aws:ec2:us-east-1:040643014701:instance/i-01381e5215e1be55f"
+            ],
+            "serviceList": [
+                "ec2"
+            ],
+            "targetTags": [
+                {
+                    "name": "App",
+                    "value": "CollaborationPortal"
+                }
+            ]
+        },
+        "jobId": "testJobID",
+        "jobName": "Cyclos Banking on AWS",
+        "metricConfig": {
+            "expression": [
+                "ec2/CPUUtilization"
+            ],
+            "metricList": []
+        },
+        "periodSecs": 600,
+        "scopeConfig": {
+            "entityList": [],
+            "entityQuery": ""
+        },
+        "startTimeOffsetInSeconds": 600,
+        "target": {
+            "count": 3,
+            "credentials": {
+                "details": [
+                    {
+                        "name": "access_key_id",
+                        "value": "id1"
+                    },
+                    {
+                        "name": "secret_access_key",
+                        "value": "sk1"
+                    }
+                ],
+                "id": "a250eaa8-2c29-4d7d-a46e-7fc33bf1431d",
+                "name": "Cyclos Prod Monitoring Account",
+                "type": "access_key"
+            },
+            "description": "1",
+            "endpoint": "www.microfocus.com",
+            "host": "us-east-1",
+            "id": "8eff03c1-dad9-48f4-9d9e-a5cfd286f3ac",
+            "name": "AWS us-east-1",
+            "protocol": "http",
+            "proxyCredentials": {
+                "credential": "",
+                "id": "",
+                "name": "",
+                "principal": "",
+                "type": ""
+            },
+            "proxyUrl": "http://web-proxy.in.softwaregrp.net:8080/",
+            "requestTimeoutInSeconds": 300,
+            "type": "aws"
+        }
+    },
+    "jobRunId": "testJobRunID",
+    "jobType": "metricPull"
+}

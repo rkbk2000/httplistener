@@ -8,6 +8,8 @@ import (
 	"log"
 	"net/http"
 	"time"
+
+	"httplistener/metrics"
 )
 
 // HandleShutdownReq for handling the metric request
@@ -62,12 +64,24 @@ func handlePrintReq(w http.ResponseWriter, req *http.Request) {
 	fmt.Println(string(data))
 }
 
+func handleJobReq(w http.ResponseWriter, req *http.Request) {
+	defer req.Body.Close()
+	data, err := readPostReq(req)
+
+	if err != nil {
+		writeError(http.StatusBadRequest, err, w)
+	}
+	metrics.HandleCollectionRequest(data)
+	//fmt.Println(string(data))
+}
+
 //StartServer starts HTTP server with given port
 func StartServer(ctx context.Context, port string) {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("/readyforshutdown", HandleShutdownReq)
 	mux.HandleFunc("/printdata", handlePrintReq)
+	mux.HandleFunc("/jobs", handleJobReq)
 
 	server := http.Server{
 		Addr:    ":" + port,
